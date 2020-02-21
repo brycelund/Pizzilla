@@ -1,6 +1,8 @@
 # Pizzilla
 AIS Tech Talk Project
 
+The Powerpoint of the presentation [can be downloaded here](https://github.com/brycelund/Pizzilla/blob/master/Resources/REST-API.pptx?raw=true)
+
 ## Getting Started
 
 1. Install Node.js
