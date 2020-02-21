@@ -2,6 +2,7 @@
 const mongoose = require('mongoose')
 
 // Set up our schema
+// What should an Order record in our database look like?
 const OrderSchema = new mongoose.Schema({
   customer: {
     type: mongoose.Schema.Types.ObjectId,
