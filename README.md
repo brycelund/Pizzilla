@@ -4,7 +4,7 @@ AIS Tech Talk Project
 
 The Powerpoint of the presentation [can be downloaded here](https://github.com/brycelund/Pizzilla/blob/master/Resources/REST-API.pptx?raw=true)
 
-(The video of the presenation)[https://youtu.be/ytwFg91xGyg]
+[The video of the presenation](https://youtu.be/ytwFg91xGyg)
 
 ## Getting Started
 
