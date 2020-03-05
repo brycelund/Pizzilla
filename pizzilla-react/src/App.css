@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+.App {
+  text-align: center;
+  font-family: 'Poppins';
+}
+
+.header {
+}
+
+.topLogo {
+  height: 50px;
+  margin: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.orderPage {
+  display: flex;
+  flex-direction: row;
+}
+
+.pizzaView {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px;
+}
+
+.orderOptions {
+  flex: 1;
+  padding: 50px;
+}
+
+.orderOptions * {
+  margin: 2px;
+}
