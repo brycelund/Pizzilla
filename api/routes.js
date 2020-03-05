@@ -5,7 +5,6 @@ const router = express.Router()
 
 // Bring in our models
 const Order = require('./models/Order')
-const Customer = require('./models/Customer')
 
 // Test route
 // This is accessible via localhost:3000/api/test
@@ -44,6 +43,7 @@ router.get('/orders/:id', async function(req, res, next) {
 router.post('/orders', function(req, res, next) {
   // Create a new Order object
   const newOrder = new Order()
+  newOrder.customer = req.body.customer
   newOrder.size = req.body.size
   newOrder.toppings = req.body.toppings
   // Set the order as pending because we have not yet started it
@@ -62,25 +62,6 @@ router.put('/orders/:id', async function(req, res, next) {
   // We put await in front of it to make sure it waits to finish before moving on to the next line of code.
   let updateOrder = await Order.updateOne({ _id: orderID }, req.body)
   // Send back the HTTP 200 response. This means all good. 👍
-  res.sendStatus(200)
-})
-
-/*************
-    CUSTOMER
-*************/
-
-// GET /orders - Return info on a specific order
-router.get('/orders', async function(req, res, next) {
-  const oneOrder = await Order.findOne({ _id: orderID })
-  res.json(oneOrder)
-})
-
-// POST /customers - Add a customer
-router.post('/customers', function(req, res, next) {
-  const newCustomer = new Customer()
-  newCustomer.name = req.body.name
-  newCustomer.email = req.body.email
-  newCustomer.save()
   res.sendStatus(200)
 })
 
