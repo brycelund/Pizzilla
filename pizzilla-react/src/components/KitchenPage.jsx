@@ -48,6 +48,15 @@ export default function KitchenPage(props) {
     }
   }
 
+  // Change the color based on how long they've been waiting!
+  function getWaitTime(order) {
+    let timeWaiting = Date.now() - Date.parse(order.orderTimestamp)
+    // Divide my 1000 to go from milliseconds to seconds. Divide by 60 to go from seconds to minutes.
+    let minutesWaiting = timeWaiting / 1000 / 60
+
+    return Math.round(minutesWaiting)
+  }
+
   // Put together all the content we'll put inside the card
   function getCardContent(order) {
     let content = []
@@ -79,7 +88,9 @@ export default function KitchenPage(props) {
               return (
                 <Col md='3' className='my-2' key={`order${index}`}>
                   <Card>
-                    <CardHeader style={getHeaderStyle(order)}>{order.customer}</CardHeader>
+                    <CardHeader style={getHeaderStyle(order)}>
+                      {order.customer} - {getWaitTime(order)} min
+                    </CardHeader>
                     <CardBody>
                       <CardTitle>
                         <strong></strong>
