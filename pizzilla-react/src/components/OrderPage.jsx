@@ -17,8 +17,9 @@ export default function OrderPage(props) {
   function submitPizza() {
     // Get the customer name that we passed over from our CustomerPage
     const customerName = props.location.data.customerName
-
-    axios.post('http://localhost:3001/api/orders', {
+    let host = window.location.origin
+    host = host.replace(/:[0-9]*/gi, '')
+    axios.post(`${host}:3001/api/orders`, {
       customer: customerName,
       size: 12,
       toppings: selectedToppings,

@@ -6,7 +6,9 @@ export default function KitchenPage(props) {
   const [orders, setOrders] = useState([])
 
   async function getOrders() {
-    let response = await axios.get('http://localhost:3001/api/orders')
+    let host = window.location.origin
+    host = host.replace(/:[0-9]*/gi, '')
+    let response = await axios.get(`${host}:3001/api/orders`)
     let orders = response.data
     orders = orders.filter((order) => order.status == 'pending')
     setOrders(orders)
@@ -20,7 +22,9 @@ export default function KitchenPage(props) {
   }, [])
 
   async function markOrderAsComplete(id) {
-    await axios.put(`http://localhost:3001/api/orders/${id}`, {
+    let host = window.location.origin
+    host = host.replace(/:[0-9]*/gi, '')
+    await axios.put(`${host}:3001/api/orders/${id}`, {
       status: 'complete'
     })
     getOrders()
@@ -46,6 +50,15 @@ export default function KitchenPage(props) {
         backgroundColor: '#E0E0E0'
       }
     }
+  }
+
+  // Change the color based on how long they've been waiting!
+  function getWaitTime(order) {
+    let timeWaiting = Date.now() - Date.parse(order.orderTimestamp)
+    // Divide my 1000 to go from milliseconds to seconds. Divide by 60 to go from seconds to minutes.
+    let minutesWaiting = timeWaiting / 1000 / 60
+
+    return Math.round(minutesWaiting)
   }
 
   // Put together all the content we'll put inside the card
@@ -79,7 +92,9 @@ export default function KitchenPage(props) {
               return (
                 <Col md='3' className='my-2' key={`order${index}`}>
                   <Card>
-                    <CardHeader style={getHeaderStyle(order)}>{order.customer}</CardHeader>
+                    <CardHeader style={getHeaderStyle(order)}>
+                      {order.customer} - {getWaitTime(order)} min
+                    </CardHeader>
                     <CardBody>
                       <CardTitle>
                         <strong></strong>
