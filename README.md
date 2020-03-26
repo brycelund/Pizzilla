@@ -7,11 +7,13 @@ The presentations can be found here:
 ### REST API
 
 [Powerpoint](https://github.com/brycelund/Pizzilla/blob/master/Resources/REST-API.pptx?raw=true)
+
 [Video](https://www.youtube.com/watch?v=ytwFg91xGyg)
 
 ### React
 
 [Powerpoint](https://github.com/brycelund/Pizzilla/blob/master/Resources/React.pptx?raw=true)
+
 [Video](https://www.youtube.com/watch?v=h8zyvK8Zobg&t=3s)
 
 ### Docker
@@ -20,8 +22,9 @@ The presentations can be found here:
 
 ECR Image Repository Links:
 
-146185153143.dkr.ecr.us-west-1.amazonaws.com/pizzilla_api
-146185153143.dkr.ecr.us-west-1.amazonaws.com/pizzilla_ui
+- 146185153143.dkr.ecr.us-west-1.amazonaws.com/pizzilla_api
+
+- 146185153143.dkr.ecr.us-west-1.amazonaws.com/pizzilla_ui
 
 ## Getting started from the download
 
