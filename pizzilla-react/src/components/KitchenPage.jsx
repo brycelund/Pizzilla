@@ -6,7 +6,8 @@ export default function KitchenPage(props) {
   const [orders, setOrders] = useState([])
 
   async function getOrders() {
-    let response = await axios.get('http://localhost:3001/api/orders')
+    let host = window.location.origin
+    let response = await axios.get(`${host}:3001/api/orders`)
     let orders = response.data
     orders = orders.filter((order) => order.status == 'pending')
     setOrders(orders)
@@ -20,7 +21,8 @@ export default function KitchenPage(props) {
   }, [])
 
   async function markOrderAsComplete(id) {
-    await axios.put(`http://localhost:3001/api/orders/${id}`, {
+    let host = window.location.origin
+    await axios.put(`${host}:3001/api/orders/${id}`, {
       status: 'complete'
     })
     getOrders()

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  pizzilla-ui:
+    build: ./pizzilla-react
+    volumes:
+      - ./pizzilla-react:/usr/src/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - pizzilla-api
+  pizzilla-api:
+    build: ./api
+    volumes:
+      - ./api:/usr/src/app
+    ports:
+      - 3001:3001
