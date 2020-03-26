@@ -2,14 +2,14 @@ FROM node:10
 
 WORKDIR /usr/src/app
 
-# Bundle app source
+# Bundle our app source
 COPY . .
 
-# Install app dependencies
 RUN npm install
 
 VOLUME /usr/src/app
 
 EXPOSE 3001
 
-CMD [ "node", "app.js" ]
+CMD ["node", "app.js"]
+
