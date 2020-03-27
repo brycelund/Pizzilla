@@ -19,6 +19,7 @@ The presentations can be found here:
 ### Docker
 
 [Powerpoint](https://github.com/brycelund/Pizzilla/blob/master/Resources/Docker.pptx?raw=true)
+
 [Video](https://www.youtube.com/watch?v=GTk2eek96_w)
 
 ECR Image Repository Links:
