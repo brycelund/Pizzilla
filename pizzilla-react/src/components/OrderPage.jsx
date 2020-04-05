@@ -18,12 +18,12 @@ export default function OrderPage(props) {
     // Get the customer name that we passed over from our CustomerPage
     const customerName = props.location.data.customerName
     let host = window.location.origin
-    host = host.replace(/:[0-9]*/gi, '')
+    host = host.replace(/:[0-9]+\/?/gi, '')
     axios.post(`${host}:3001/api/orders`, {
       customer: customerName,
       size: 12,
       toppings: selectedToppings,
-      price: 15.99
+      price: 15.99,
     })
     setDone(true)
   }
