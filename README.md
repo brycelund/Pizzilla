@@ -22,6 +22,12 @@ The presentations can be found here:
 
 [Video](https://www.youtube.com/watch?v=GTk2eek96_w)
 
+### Stripe + Webhooks + Hosting on a .com
+
+[Powerpoint](https://github.com/brycelund/Pizzilla/blob/master/Resources/StripeWebhooks.pptx?raw=true)
+
+[Video](https://www.youtube.com/watch?v=QiVV4GkX8wc&t=1s)
+
 ECR Image Repository Links:
 
 - 146185153143.dkr.ecr.us-west-1.amazonaws.com/pizzilla_api
