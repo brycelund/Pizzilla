@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import CustomerPage from './components/CustomerPage'
 import OrderPage from './components/OrderPage'
 import KitchenPage from './components/KitchenPage'
+import CheckoutPage from './components/CheckoutPage'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/customer' component={CustomerPage} />
           <Route path='/order' component={OrderPage} />
           <Route path='/kitchen' component={KitchenPage} />
+          <Route path='/checkout' component={CheckoutPage} />
           <Route exact path='/' render={() => <Redirect to='/customer' />} />
         </Switch>
       </Router>

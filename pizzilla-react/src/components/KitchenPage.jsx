@@ -7,7 +7,7 @@ export default function KitchenPage(props) {
 
   async function getOrders() {
     let host = window.location.origin
-    host = host.replace(/:[0-9]*/gi, '')
+    host = host.replace(/:[0-9]+\/?/gi, '')
     let response = await axios.get(`${host}:3001/api/orders`)
     let orders = response.data
     orders = orders.filter((order) => order.status == 'pending')
@@ -23,7 +23,7 @@ export default function KitchenPage(props) {
 
   async function markOrderAsComplete(id) {
     let host = window.location.origin
-    host = host.replace(/:[0-9]*/gi, '')
+    host = host.replace(/:[0-9]+\/?/gi, '')
     await axios.put(`${host}:3001/api/orders/${id}`, {
       status: 'complete'
     })

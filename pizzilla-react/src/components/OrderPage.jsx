@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button } from 'reactstrap'
 import { Link, useHistory } from 'react-router-dom'
 import PizzaBuilder from './PizzaBuilder'
+import StripeCheckout from 'react-stripe-checkout'
 
 import axios from 'axios'
 
@@ -18,14 +19,33 @@ export default function OrderPage(props) {
     // Get the customer name that we passed over from our CustomerPage
     const customerName = props.location.data.customerName
     let host = window.location.origin
-    host = host.replace(/:[0-9]*/gi, '')
+    host = host.replace(/:[0-9]+\/?/gi, '')
     axios.post(`${host}:3001/api/orders`, {
       customer: customerName,
       size: 12,
       toppings: selectedToppings,
-      price: 15.99
+      price: 15.99,
     })
     setDone(true)
+  }
+
+  function onToken(token) {
+    const customerName = props.location.data.customerName
+    let host = window.location.origin
+    host = host.replace(/:[0-9]+\/?/gi, '')
+    axios
+      .post(`${host}:3001/api/checkout`, {
+        token: token.id,
+        size: 12,
+        toppings: selectedToppings,
+        customer: customerName,
+      })
+      .then((response) => {
+        submitPizza()
+      })
+      .catch((error) => {
+        console.log('error', error)
+      })
   }
 
   // Handle what happens when you click an ingredient button
@@ -92,9 +112,7 @@ export default function OrderPage(props) {
           </Button>
         </div>
         <div className=''>
-          <Button onClick={submitPizza} color='success' size='lg' className='btn-block my-3'>
-            Order Pizza
-          </Button>
+          <StripeCheckout token={onToken} stripeKey='pk_test_c3YBzRWA3ju0YiJHTzetcqDB' className='my-3 btn-block' />
           <Link to='/customer'>
             <Button color='secondary' size='lg' className='btn-block my-3'>
               Start Over
